@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RestController
 @RequestMapping("/trainers")
@@ -31,4 +33,9 @@ public class TrainerController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @GetMapping("")
+    public ResponseEntity<List<Trainer>> getTrainees(@PathParam("grouped") String grouped) {
+        List<Trainer> trainers = trainerService.getTrainers(grouped);
+        return ResponseEntity.ok(trainers);
+    }
 }

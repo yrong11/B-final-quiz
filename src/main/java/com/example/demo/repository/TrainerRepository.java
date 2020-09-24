@@ -11,4 +11,7 @@ public interface TrainerRepository extends CrudRepository<Trainer, Long> {
     @Override
     List<Trainer> findAll();
 
+    List<Trainer> findAllByTrainGroupIsNull();
+
+    List<Trainer> findAllByTrainGroupIsNotNull();
 }

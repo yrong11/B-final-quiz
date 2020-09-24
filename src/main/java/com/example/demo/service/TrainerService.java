@@ -1,11 +1,14 @@
 package com.example.demo.service;
 
 
+import com.example.demo.domain.Trainee;
 import com.example.demo.domain.Trainer;
 import com.example.demo.exception.ErrorMsg;
 import com.example.demo.exception.NotExistException;
 import com.example.demo.repository.TrainerRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TrainerService {
@@ -24,6 +27,16 @@ public class TrainerService {
         checkTraineeExist(id);
         trainerRepository.deleteById(id);
 
+    }
+
+    public List<Trainer> getTrainers(String grouped) {
+        if (grouped == null) {
+            return trainerRepository.findAll();
+        }
+        if (grouped.equals("false")){
+            return trainerRepository.findAllByTrainGroupIsNull();
+        }
+        return trainerRepository.findAllByTrainGroupIsNotNull();
     }
 
     private void checkTraineeExist(long id) {
