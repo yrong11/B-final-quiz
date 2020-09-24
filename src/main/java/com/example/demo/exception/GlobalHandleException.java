@@ -20,8 +20,13 @@ public class GlobalHandleException {
     }
 
     @ExceptionHandler(NotExistException.class)
-    public ResponseEntity<ErrorResult> handleArgNotValidException(NotExistException exception) {
+    public ResponseEntity<ErrorResult> handleNotExistException(NotExistException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(assemblyErrorResult(exception, HttpStatus.NOT_FOUND.value()));
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorResult> handleBusinessException(BusinessException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(assemblyErrorResult(exception, HttpStatus.BAD_REQUEST.value()));
     }
 
     private ErrorResult assemblyErrorResult(Exception exception, int code) {

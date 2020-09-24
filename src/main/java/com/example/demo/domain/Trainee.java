@@ -4,10 +4,7 @@ package com.example.demo.domain;
 import com.example.demo.exception.ErrorMsg;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -29,4 +26,7 @@ public class Trainee {
     private String email;
     @NotEmpty(message = ErrorMsg.TRAINEE_ZOOM_ID_NOT_EMPTY)
     private String zoomId;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private TrainGroup trainGroup;
+
 }

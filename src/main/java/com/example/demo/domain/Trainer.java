@@ -3,10 +3,7 @@ package com.example.demo.domain;
 import com.example.demo.exception.ErrorMsg;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -20,4 +17,7 @@ public class Trainer {
     private long id;
     @NotEmpty(message = ErrorMsg.TRAINER_NAME_NOT_EMPTY)
     private String name;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private TrainGroup trainGroup;
+
 }

@@ -9,6 +9,7 @@ public class ErrorMsg {
     public static final String TRAINEE_NOT_EXIST = "id为%d的学员不存在";
     public static final String TRAINER_NOT_EXIST = "id为%d的讲师不存在";
     public static final String TRAINER_NAME_NOT_EMPTY = "讲师名字不能为空";
+    public static final String TRAINER_SIZE_LESS_THAN_TWO = "讲师人数小于2";
 
 
 
