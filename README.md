@@ -64,7 +64,7 @@ GET /trainees?grouped=false
 #### EXAMPLE
 
 ```shell
-$ curl localhost:8080/trainees?grouped=false
+$ curl 'localhost:8080/trainees?grouped=false'
 [
     {
         "id": 1,
@@ -189,7 +189,7 @@ GET /trainers?grouped=false
 #### EXAMPLE
 
 ```shell
-$ curl localhost:8080/trainers?grouped=false
+$ curl 'localhost:8080/trainers?grouped=false'
 [
     {
         "id": 1,
