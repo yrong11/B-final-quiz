@@ -46,6 +46,7 @@ GET /trainees?grouped=false
 ##### Status
 
 成功时返回 200 OK。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
@@ -69,15 +70,15 @@ $ curl localhost:8080/trainees?grouped=false
         "id": 1,
         "name": "Foo",
         "office": "西安",
-        "email": foo@thoughtworks.com,
-        "zoomId": “foo”
+        "email": "foo@thoughtworks.com",
+        "zoomId": "foo"
     },
     {
         "id": 2,
         "name": "Bar",
         "office": "北京",
-        "email": bar@thoughtworks.com,
-        "zoomId": “bar”
+        "email": "bar@thoughtworks.com",
+        "zoomId": "bar"
     }
 ]
 ```
@@ -102,7 +103,9 @@ POST /trainees
 ##### Status
 
 成功时返回 201 Created。
+
 校验失败时返回 400 Bad Request。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
@@ -125,8 +128,8 @@ $ curl -v -H "Content-Type: application/json" --data @trainee.json localhost:808
     "id": 11,
     "name": "Foo",
     "office": "西安",
-    "email": foo@thoughtworks.com,
-    "zoomId": “foo”
+    "email": "foo@thoughtworks.com",
+    "zoomId": "foo"
 }
 ```
 
@@ -147,7 +150,9 @@ DELETE /trainees/{trainee_id}
 ##### Status
 
 成功时返回 204 No Content。
+
 `{trainee_id}` 不存在时返回 404 Not Found。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 #### EXAMPLE
@@ -169,11 +174,12 @@ GET /trainers?grouped=false
 ##### Status
 
 成功时返回 200 OK。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
 
-查询成功会返回 trainer 的 list，如果没有未分组的学员，则返回 `[]`：
+查询成功会返回 trainer 的 list，如果没有未分组的讲师，则返回 `[]`：
 
 | 字段:类型          | 说明               |
 | ------------------ | ------------------ |
@@ -213,7 +219,9 @@ POST /trainers
 ##### Status
 
 成功时返回 201 Created。
+
 校验失败时返回 400 Bad Request。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
@@ -252,7 +260,9 @@ DELETE /trainers/{trainer_id}
 ##### Status
 
 成功时返回 204 No Content。
+
 `{trainer_id}` 不存在时返回 404 Not Found。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 #### EXAMPLE
@@ -272,6 +282,7 @@ GET /groups
 ##### Status
 
 成功时返回 200 Ok。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
@@ -308,8 +319,8 @@ $ curl localhost:8080/groups
                 "id": 1,
                 "name": "Foo",
                 "office": "西安",
-                "email": “foo@thoughtworks.com”,
-                "zoomId": “foo”
+                "email": "foo@thoughtworks.com",
+                "zoomId": "foo"
             }
         ]
     },
@@ -331,8 +342,8 @@ $ curl localhost:8080/groups
                 "id": 2,
                 "name": "Bar",
                 "office": "北京",
-                "email": “bar@thoughtworks.com”,
-                "zoomId": “bar”
+                "email": "bar@thoughtworks.com",
+                "zoomId": "bar"
             }
         ]
     }
@@ -350,7 +361,9 @@ POST /groups/auto-grouping
 ##### Status
 
 成功时返回 200 Ok。
+
 不满足分组条件（比如：讲师人数小于 2 人）时返回 400 Bad Request。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
@@ -387,8 +400,8 @@ $ curl -X POST localhost:8080/groups/auto-grouping
                 "id": 1,
                 "name": "Foo",
                 "office": "西安",
-                "email": “foo@thoughtworks.com”,
-                "zoomId": “foo”
+                "email": "foo@thoughtworks.com",
+                "zoomId": "foo"
             }
         ]
     },
@@ -410,8 +423,8 @@ $ curl -X POST localhost:8080/groups/auto-grouping
                 "id": 2,
                 "name": "Bar",
                 "office": "北京",
-                "email": “bar@thoughtworks.com”,
-                "zoomId": “bar”
+                "email": "bar@thoughtworks.com",
+                "zoomId": "bar"
             }
         ]
     }
@@ -435,8 +448,11 @@ PATCH /groups/{group_id}
 ##### Status
 
 成功时返回 200 Ok。
+
 `{group_id}` 不存在时返回 404 Not Found。
+
 新名称与已有分组名称重复时返回 400 Bad Request。
+
 其它情况请根据 REST API Design 自行选择合理的实现。
 
 ##### Body
