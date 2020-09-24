@@ -10,4 +10,7 @@ import java.util.List;
 public interface TraineeRepository extends CrudRepository<Trainee, Long> {
     @Override
     List<Trainee> findAll();
+    List<Trainee> findAllByTrainGroupIsNotNull();
+    List<Trainee> findAllByTrainGroupIsNull();
+
 }

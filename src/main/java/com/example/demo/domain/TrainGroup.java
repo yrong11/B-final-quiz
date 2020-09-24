@@ -19,9 +19,10 @@ public class TrainGroup {
     private long id;
     @NotNull
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainGroup")
+    private int flag;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "trainGroup")
     private List<Trainee> trainees;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainGroup")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "trainGroup")
     private List<Trainer> trainers;
 
 

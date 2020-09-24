@@ -19,7 +19,7 @@ public class Trainer {
     @NotEmpty(message = ErrorMsg.TRAINER_NAME_NOT_EMPTY)
     private String name;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private TrainGroup trainGroup;
 
 }

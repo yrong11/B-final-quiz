@@ -6,6 +6,8 @@ import com.example.demo.exception.NotExistException;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TraineeService {
 
@@ -29,5 +31,15 @@ public class TraineeService {
         if (!traineeRepository.existsById(id)){
             throw new NotExistException(String.format(ErrorMsg.TRAINEE_NOT_EXIST, id));
         }
+    }
+
+    public List<Trainee> getTrainees(String grouped) {
+        if (grouped == null) {
+            return traineeRepository.findAll();
+        }
+        if (grouped.equals("false")){
+            return traineeRepository.findAllByTrainGroupIsNull();
+        }
+        return traineeRepository.findAllByTrainGroupIsNotNull();
     }
 }

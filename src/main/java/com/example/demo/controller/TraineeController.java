@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -29,5 +31,11 @@ public class TraineeController {
     public ResponseEntity<String> deleteTrainee(@PathVariable long id) {
         traineeService.deleteTrainee(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<Trainee>> getTrainees(@PathParam("grouped") String grouped) {
+        List<Trainee> trainees = traineeService.getTrainees(grouped);
+        return ResponseEntity.ok(trainees);
     }
 }

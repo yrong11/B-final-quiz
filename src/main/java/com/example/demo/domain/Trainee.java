@@ -28,7 +28,7 @@ public class Trainee {
     @NotEmpty(message = ErrorMsg.TRAINEE_ZOOM_ID_NOT_EMPTY)
     private String zoomId;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private TrainGroup trainGroup;
 
 }
