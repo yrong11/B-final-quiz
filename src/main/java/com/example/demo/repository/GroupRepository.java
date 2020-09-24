@@ -7,8 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface GroupRepository extends CrudRepository<TrainGroup, Integer> {
+public interface GroupRepository extends CrudRepository<TrainGroup, Long> {
     @Override
     List<TrainGroup> findAll();
+
     void deleteByIdLessThan(long id);
+
+    boolean existsByName(String name);
 }

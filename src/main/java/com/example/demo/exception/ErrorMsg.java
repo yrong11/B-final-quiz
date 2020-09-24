@@ -10,6 +10,8 @@ public class ErrorMsg {
     public static final String TRAINER_NOT_EXIST = "id为%d的讲师不存在";
     public static final String TRAINER_NAME_NOT_EMPTY = "讲师名字不能为空";
     public static final String TRAINER_SIZE_LESS_THAN_TWO = "讲师人数小于2";
+    public static final String GROUP_NAME_REPEAT = "更新组名重复";
+    public static final String GROUP_NOT_EXIST = "id为%d的分组不存在";
 
 
 

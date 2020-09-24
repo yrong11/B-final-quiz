@@ -29,4 +29,10 @@ public class GroupController {
         List<TrainGroup> trainGroups = groupService.getGroups();
         return ResponseEntity.ok(trainGroups);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> updateGroupName(@PathVariable long id, @RequestBody String name){
+        groupService.updateGroupName(id, name);
+        return ResponseEntity.ok().build();
+    }
 }

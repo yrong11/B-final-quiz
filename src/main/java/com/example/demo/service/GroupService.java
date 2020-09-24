@@ -76,4 +76,16 @@ public class GroupService {
     public List<TrainGroup> getGroups() {
         return groupRepository.findAll();
     }
+
+    public void updateGroupName(long id, String name) {
+        if (!groupRepository.existsById(id)){
+            throw new BusinessException(String.format(ErrorMsg.GROUP_NOT_EXIST, id));
+        }
+        if (groupRepository.existsByName(name)){
+            throw new BusinessException(ErrorMsg.GROUP_NAME_REPEAT);
+        }
+        TrainGroup trainGroup = groupRepository.findById(id).get();
+        trainGroup.setName(name);
+        groupRepository.save(trainGroup);
+    }
 }
