@@ -12,7 +12,7 @@ import java.util.Date;
 public class GlobalHandleException {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity handleArgNotValidException(MethodArgumentNotValidException exception) {
+    public ResponseEntity<ErrorResult> handleArgNotValidException(MethodArgumentNotValidException exception) {
         ErrorResult errorResult = ErrorResult.builder().code(HttpStatus.BAD_REQUEST.value())
                 .timestamp(new Date())
                 .message(exception.getBindingResult().getFieldError().getDefaultMessage()).build();
@@ -20,14 +20,13 @@ public class GlobalHandleException {
     }
 
     @ExceptionHandler(TraineeNotExistException.class)
-    public ResponseEntity handleArgNotValidException(TraineeNotExistException exception) {
+    public ResponseEntity<ErrorResult> handleArgNotValidException(TraineeNotExistException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(assemblyErrorResult(exception, HttpStatus.NOT_FOUND.value()));
     }
 
     private ErrorResult assemblyErrorResult(Exception exception, int code) {
-        ErrorResult errorResult = ErrorResult.builder().code(code)
+        return ErrorResult.builder().code(code)
                 .timestamp(new Date()).message(exception.getMessage()).build();
-        return errorResult;
     }
 
 

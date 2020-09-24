@@ -19,7 +19,7 @@ import javax.validation.constraints.NotEmpty;
 public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @NotEmpty(message = ErrorMsg.TRAINEE_NAME_NOT_EMPTY)
     private String name;
     @NotEmpty(message = ErrorMsg.TRAINEE_OFFICE_NOT_EMPTY)

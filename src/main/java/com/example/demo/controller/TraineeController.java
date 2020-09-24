@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 @RestController
@@ -27,7 +26,7 @@ public class TraineeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteTrainee(@PathVariable int id) {
+    public ResponseEntity<String> deleteTrainee(@PathVariable long id) {
         traineeService.deleteTrainee(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

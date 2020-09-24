@@ -16,17 +16,16 @@ public class TraineeService {
     }
 
     public Trainee addTrainee(Trainee trainee) {
-        Trainee result = traineeRepository.save(trainee);
-        return result;
+        return traineeRepository.save(trainee);
     }
 
-    public void deleteTrainee(int id) {
+    public void deleteTrainee(long id) {
         checkTraineeExist(id);
         traineeRepository.deleteById(id);
 
     }
 
-    private void checkTraineeExist(int id) {
+    private void checkTraineeExist(long id) {
         if (!traineeRepository.existsById(id)){
             throw new TraineeNotExistException(String.format(ErrorMsg.TRAINEE_NOT_EXIST, id));
         }
