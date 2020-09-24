@@ -38,6 +38,7 @@ public class GroupService {
         while (!trainees.isEmpty()){
             Trainee trainee = trainees.remove(trainees.size() - 1);
             groups.get(groupId).getTrainees().add(trainee);
+            trainee.setTrainGroup(groups.get(groupId));
             groupId = ++groupId % groups.size();
         }
         groupRepository.saveAll(groups);
@@ -53,12 +54,16 @@ public class GroupService {
         List<TrainGroup> groups = new ArrayList<>();
         for (int i = 0; i < allTrainers.size()/2; i++) {
             TrainGroup trainGroup = TrainGroup.builder().trainers(new ArrayList<>()).trainees(new ArrayList<>()).name(i + 1 + " 组").build();
+            allTrainers.get(2 * i).setTrainGroup(trainGroup);
+            allTrainers.get(2 * i + 1).setTrainGroup(trainGroup);
             trainGroup.getTrainers().add(allTrainers.get(2 * i));
             trainGroup.getTrainers().add(allTrainers.get(2 * i + 1));
             groups.add(trainGroup);
         }
-        allTrainers.get(allTrainers.size() - 1).setTrainGroup(null);
-        trainerRepository.save(allTrainers.get(allTrainers.size() - 1));
+        if (allTrainers.size() % 2 != 0){
+            allTrainers.get(allTrainers.size() - 1).setTrainGroup(null);
+            trainerRepository.save(allTrainers.get(allTrainers.size() - 1));
+        }
         return groups;
     }
 
@@ -66,5 +71,9 @@ public class GroupService {
         if (trainerRepository.count() < 2) {
             throw new BusinessException(ErrorMsg.TRAINER_SIZE_LESS_THAN_TWO);
         }
+    }
+
+    public List<TrainGroup> getGroups() {
+        return groupRepository.findAll();
     }
 }

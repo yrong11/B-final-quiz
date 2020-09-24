@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.TrainGroup;
 import com.example.demo.service.GroupService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,12 @@ public class GroupController {
     @PostMapping("/auto-grouping")
     public ResponseEntity<List<TrainGroup>> grouping() {
         List<TrainGroup> trainGroups = groupService.grouping();
+        return ResponseEntity.ok(trainGroups);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<TrainGroup>> getGroups() {
+        List<TrainGroup> trainGroups = groupService.getGroups();
         return ResponseEntity.ok(trainGroups);
     }
 }

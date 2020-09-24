@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import com.example.demo.exception.ErrorMsg;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,8 @@ public class Trainer {
     private long id;
     @NotEmpty(message = ErrorMsg.TRAINER_NAME_NOT_EMPTY)
     private String name;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     private TrainGroup trainGroup;
 
 }

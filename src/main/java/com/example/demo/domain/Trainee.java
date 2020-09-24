@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 
 import com.example.demo.exception.ErrorMsg;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,7 +27,8 @@ public class Trainee {
     private String email;
     @NotEmpty(message = ErrorMsg.TRAINEE_ZOOM_ID_NOT_EMPTY)
     private String zoomId;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     private TrainGroup trainGroup;
 
 }
