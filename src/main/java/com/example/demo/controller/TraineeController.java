@@ -25,4 +25,10 @@ public class TraineeController {
         Trainee respTrainee = traineeService.addTrainee(trainee);
         return ResponseEntity.status(HttpStatus.CREATED).body(respTrainee);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteTrainee(@PathVariable int id) {
+        traineeService.deleteTrainee(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
