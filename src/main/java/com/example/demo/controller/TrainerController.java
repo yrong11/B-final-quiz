@@ -5,10 +5,7 @@ import com.example.demo.domain.Trainer;
 import com.example.demo.service.TrainerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -26,4 +23,12 @@ public class TrainerController {
     public ResponseEntity<Trainer> addTrainee(@Valid @RequestBody Trainer trainer){
         Trainer respTrainer = trainerService.addTrainer(trainer);
         return ResponseEntity.status(HttpStatus.CREATED).body(respTrainer);
-    }}
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTrainee(@PathVariable long id) {
+        trainerService.deleteTrainer(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+}

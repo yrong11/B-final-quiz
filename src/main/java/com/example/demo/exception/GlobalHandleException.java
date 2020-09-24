@@ -19,8 +19,8 @@ public class GlobalHandleException {
         return ResponseEntity.badRequest().body(errorResult);
     }
 
-    @ExceptionHandler(TraineeNotExistException.class)
-    public ResponseEntity<ErrorResult> handleArgNotValidException(TraineeNotExistException exception) {
+    @ExceptionHandler(NotExistException.class)
+    public ResponseEntity<ErrorResult> handleArgNotValidException(NotExistException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(assemblyErrorResult(exception, HttpStatus.NOT_FOUND.value()));
     }
 

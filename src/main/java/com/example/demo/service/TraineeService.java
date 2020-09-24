@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Trainee;
 import com.example.demo.exception.ErrorMsg;
-import com.example.demo.exception.TraineeNotExistException;
+import com.example.demo.exception.NotExistException;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class TraineeService {
 
     private void checkTraineeExist(long id) {
         if (!traineeRepository.existsById(id)){
-            throw new TraineeNotExistException(String.format(ErrorMsg.TRAINEE_NOT_EXIST, id));
+            throw new NotExistException(String.format(ErrorMsg.TRAINEE_NOT_EXIST, id));
         }
     }
 }
