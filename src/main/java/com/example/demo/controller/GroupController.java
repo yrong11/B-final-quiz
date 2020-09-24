@@ -31,8 +31,8 @@ public class GroupController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<String> updateGroupName(@PathVariable long id, @RequestBody String name){
-        groupService.updateGroupName(id, name);
+    public ResponseEntity<String> updateGroupName(@PathVariable long id, @RequestBody TrainGroup group){
+        groupService.updateGroupName(id, group.getName());
         return ResponseEntity.ok().build();
     }
 }
