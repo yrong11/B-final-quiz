@@ -1,5 +1,5 @@
 package com.example.demo.exception;
-
+//GTB: 有抽取变量的意识，统一管理ErrorMsg，很棒
 public class ErrorMsg {
     public static final String TRAINEE_NAME_NOT_EMPTY = "学员名字不能为空";
     public static final String TRAINEE_OFFICE_NOT_EMPTY = "学员办公室不能为空";

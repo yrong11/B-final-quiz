@@ -18,12 +18,13 @@ public class GroupController {
         this.groupService = groupService;
     }
 
+    //TODO GTB：如果没有定制化的返回需求，可以省略ResponseEntity
     @PostMapping("/auto-grouping")
     public ResponseEntity<List<TrainGroup>> grouping() {
         List<TrainGroup> trainGroups = groupService.grouping();
         return ResponseEntity.ok(trainGroups);
     }
-
+    //TODO GTB: 如果path为空，可以不写""
     @GetMapping("")
     public ResponseEntity<List<TrainGroup>> getGroups() {
         List<TrainGroup> trainGroups = groupService.getGroups();

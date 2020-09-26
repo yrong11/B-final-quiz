@@ -7,3 +7,4 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+//TODO GTB：思考一下，这里用create合适吗？

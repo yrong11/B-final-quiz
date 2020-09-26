@@ -47,11 +47,14 @@ public class GroupService {
         return groupRepository.findAll();
     }
 
+    //TODO GTB：这个@Transactional是不会生效的，感兴趣可以找找答案，可能后面在项目上也会遇到类似的问题
+    //TODO GTB：这个方法可以按模块抽取方法重构
     @Transactional
     public List<TrainGroup> generateGroupAndGroupTrainer() {
         List<Trainer> allTrainers = trainerRepository.findAll();
         Collections.shuffle(allTrainers);
         List<TrainGroup> groups = new ArrayList<>();
+        //TODO GTB：Magic number
         for (int i = 0; i < allTrainers.size()/2; i++) {
             TrainGroup trainGroup = TrainGroup.builder().trainers(new ArrayList<>()).trainees(new ArrayList<>()).name(i + 1 + " 组").build();
             allTrainers.get(2 * i).setTrainGroup(trainGroup);
